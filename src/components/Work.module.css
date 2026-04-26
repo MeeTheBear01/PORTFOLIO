@@ -1,0 +1,301 @@
+.workSection {
+  padding: 5rem 0;
+  background: radial-gradient(circle at center, #111 0%, #050505 100%);
+  overflow: hidden;
+  min-height: 110vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sectionTitle {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #fff;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+}
+
+.mainLayout {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+}
+
+/* 1. Center Container for MacBook 3D Layers */
+.centerContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 111%;
+  z-index: 100;
+  margin-top: 2rem;
+}
+
+/* Display Part */
+.macbookDisplay {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 600px; /* ปรับขนาดให้สมส่วน */
+  height: 380px;
+  border: 3px solid #464752;
+  border-radius: 1rem;
+  background: #181818;
+  filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.1));
+  animation: shine2 12s infinite;
+  z-index: 5;
+}
+
+.macbookScreen {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 95%;
+  height: 88%;
+  background-color: #000;
+  bottom: 20px;
+  left: 2.5%;
+  overflow: hidden;
+}
+
+.screenImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.menubar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 10px;
+  background: #ffffff59;
+  z-index: 10;
+}
+
+.dock {
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  bottom: 5px;
+  width: 60%;
+  height: 15px;
+  background: #ffffff59;
+  border-radius: 3px;
+  z-index: 10;
+}
+
+.dockIcon {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: #69a5ff;
+}
+
+.macLabel {
+  position: absolute;
+  color: #696969;
+  font-size: 8px;
+  font-family: sans-serif;
+  z-index: 10;
+  bottom: 5px;
+}
+
+/* 2. Keyboard Part */
+.keys {
+  position: relative;
+  width: 760px;
+  height: 40px;
+  top: -10px; /* ให้เกยกับหน้าจอ */
+  background-image: linear-gradient(#424242, #424242) !important;
+  clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
+  display: flex;
+  justify-content: center;
+  z-index: 4;
+}
+
+.board {
+  position: relative;
+  width: 75%;
+  height: 20px;
+  top: 4px;
+  background-image: linear-gradient(#141414ce, #141414ce) !important;
+  clip-path: polygon(5% 0%, 95% 0%, 100% 100%, 0% 100%);
+}
+
+.touchpad {
+  position: absolute;
+  width: 180px;
+  height: 12px;
+  top: 25px;
+  border-radius: 4px;
+  background-image: linear-gradient(#3f3f3f96, #3f3f3f96) !important;
+  clip-path: polygon(8% 0%, 92% 0%, 100% 100%, 0% 100%);
+}
+
+/* 3. Base Part */
+.comp {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  top: -12px;
+  width: 757px;
+  height: 15px;
+  background: #393a42;
+  filter: drop-shadow(-10px 40px 30px rgba(0,0,0,0.5));
+  animation: shine1 10s infinite;
+  z-index: 3;
+}
+
+.notch {
+  position: relative;
+  width: 120px;
+  height: 10px;
+  background: #4e4f58;
+  border-radius: 0 0 20px 20px;
+}
+
+.compBottom {
+  position: relative;
+  top: -14px;
+  width: 757px;
+  height: 4px;
+  background: #35353d;
+  border-radius: 0 0 50% 50%;
+  z-index: 2;
+}
+
+/* 4. Curved Slider Track */
+.trackWrapper {
+  position: absolute;
+  width: 175%;
+  max-width: 1400px;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.track {
+  --size: 250px;
+  height: calc(var(--size) + 150px);
+  width: 100%;
+  display: flex;
+  overflow-x: auto;
+  gap: 3rem;
+  list-style-type: none;
+  margin: 0;
+  padding: 50px 40%;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-mask: radial-gradient(#0000 0 30%, #000 30.5%) 50% calc(var(--size) * 0.5) / 300% 100%,
+                linear-gradient(0deg, black, black) 50% 0 / 100% 20px no-repeat,
+                linear-gradient(0deg, black, black) 50% 100% / 100% 20px no-repeat;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.trackItem {
+  height: var(--size);
+  aspect-ratio: 1;
+  flex-shrink: 0;
+  scroll-snap-align: center;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #111;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.5s ease;
+}
+
+.trackItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+}
+
+.trackItem.active {
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+}
+
+.activeInfo {
+  text-align: center;
+  margin-top: 1rem;
+  z-index: 100;
+}
+
+.activeInfo h4 {
+  font-size: 2.2rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-weight: 900;
+}
+
+.activeInfo p {
+  color: #888;
+}
+
+/* Navigation Buttons */
+.navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 200; /* อยู่หน้าสุด */
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.navBtn:hover {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+}
+
+.navBtn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.prevBtn { left: 10px; }
+.nextBtn { right: 10px; }
+
+@keyframes shine1 {
+  0%, 100% { filter: drop-shadow(-10px 40px 30px #dfdfdf50); }
+  50% { filter: drop-shadow(-20px 40px 20px #11a0f350); }
+}
+
+@keyframes shine2 {
+  0%, 100% { filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.2)); }
+  50% { filter: drop-shadow(0px -40px 40px rgba(255, 61, 239, 0.2)); }
+}
+
+@media (max-width: 1100px) {
+  .macbookDisplay { width: 90vw; height: 56vw; }
+  .keys, .comp, .compBottom { width: 100vw; }
+  .track { padding: 50px 25%; }
+  .navBtn { width: 50px; height: 50px; }
+  .prevBtn { left: 10px; }
+  .nextBtn { right: 10px; }
+}
