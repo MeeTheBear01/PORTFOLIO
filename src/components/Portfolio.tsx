@@ -1,36 +1,42 @@
 import { type FC } from 'react';
 import styles from './Portfolio.module.css';
 import { motion } from 'framer-motion';
-import { ExternalLink, Code } from 'lucide-react';
 
-const projects = [
+const experiences = [
   {
-    title: 'Nexus Platform',
-    category: 'Full Stack App',
-    description: 'A real-time collaboration tool for remote teams built with Socket.io and React.',
-    tech: ['React', 'Node.js', 'Redis'],
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2426'
+    company: 'TigerSoft (1998) Co., Ltd.',
+    period: 'October 2025 - June 2026',
+    role: 'Full Stack Developer',
+    description: 'Developed and maintained HRM web applications using VB.NET, SQL Server, HTML, CSS, and JavaScript. Developed APIs and implemented unit testing with NUnit.',
+    tech: ['VB.NET', 'SQL Server', 'HTML/CSS', 'JavaScript', 'NUnit', 'Telerik Reporting']
   },
   {
-    title: 'Aura UI Kit',
-    category: 'Design System',
-    description: 'Modern, minimalist design system for high-conversion landing pages.',
-    tech: ['TypeScript', 'CSS Modules', 'Storybook'],
-    image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=2400'
+    company: 'Wisdom Want Industrial Co., Ltd.',
+    period: 'February 2025 - September 2025',
+    role: 'Full Stack Developer',
+    description: 'Built web applications using React, NodeJS, PostgreSQL, MongoDB, and Redis. Maintained legacy systems with ASP.NET Core and designed user-friendly UIs.',
+    tech: ['React', 'NodeJS', 'PostgreSQL', 'MongoDB', 'Redis', 'ASP.NET Core', 'SQL Server']
   },
   {
-    title: 'Crypto Pulse',
-    category: 'Data Visualization',
-    description: 'Live cryptocurrency dashboard with advanced charting and alerts.',
-    tech: ['Next.js', 'D3.js', 'CoinGecko API'],
-    image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=2232'
+    company: 'V.SIRIKAN AUTOPARTS Co., Ltd.',
+    period: 'April 2024 - November 2024',
+    role: 'Full Stack Developer',
+    description: 'Developed web applications using ASP.NET Core, SQL Server, and React. Created reports with Microsoft Report Builder and managed printing systems via Raspberry Pi.',
+    tech: ['ASP.NET Core', 'React', 'SQL Server', 'Microsoft Report Builder', 'Raspberry Pi', 'jQuery']
   },
   {
-    title: 'Zen Workspace',
-    category: 'Productivity Tool',
-    description: 'Minimalist focus timer and task manager for developers.',
-    tech: ['React Native', 'Firebase', 'Zustand'],
-    image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=2344'
+    company: 'Top Provider Systems & Supply',
+    period: 'August 2022 - October 2022',
+    role: 'Frontend Developer',
+    description: 'Developed a Hospital Management Web Application using ReactJS based on specific designs and requirements. Integrated REST APIs for data management.',
+    tech: ['ReactJS', 'REST API', 'JavaScript', 'CSS Modules']
+  },
+  {
+    company: 'Nattachat Co., Ltd.',
+    period: 'March 2022 - July 2022',
+    role: 'Frontend Developer',
+    description: 'Created web applications using React.js and NextJS. Developed user interfaces based on design specifications and connected with backend APIs.',
+    tech: ['React.js', 'Next.js', 'UI Design', 'API Integration']
   }
 ];
 
@@ -39,66 +45,60 @@ const Portfolio: FC = () => {
     <section id="works" className={styles.portfolio}>
       <div className="container">
         <div className={styles.header}>
-          <motion.h3 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className={styles.sectionTitle}
           >
-            Selected Works
-          </motion.h3>
+            Professional Journey
+          </motion.h2>
           <motion.p 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
             className={styles.subtitle}
           >
-            A glimpse into my recent digital creations.
+            A chronological overview of my career path, experience, and technical growth.
           </motion.p>
         </div>
-        
-        <div className={styles.grid}>
-          {projects.map((project, index) => (
-            <motion.div 
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -10 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className={styles.projectCard}
-            >
-              <div className={styles.imageContainer}>
-                <img src={project.image} alt={project.title} />
+
+        <div className={styles.timeline}>
+          {experiences.map((exp, index) => (
+            <div key={index} className={styles.timelineItem}>
+              <div className={`${styles.timelineRow} ${index % 2 === 0 ? styles.leftRow : styles.rightRow}`}>
+                
+                {/* Content Side */}
                 <motion.div 
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  className={styles.overlay}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className={styles.textSide}
                 >
-                  <div className={styles.links}>
-                    <motion.a whileHover={{ scale: 1.2, rotate: 5 }} href="#"><Code size={20} /></motion.a>
-                    <motion.a whileHover={{ scale: 1.2, rotate: -5 }} href="#"><ExternalLink size={20} /></motion.a>
+                  <span className={styles.yearLabel}>{exp.period}</span>
+                  <h3 className={styles.projectTitle}>{exp.company}</h3>
+                  <h4 className={styles.roleLabel}>{exp.role}</h4>
+                  <p className={styles.description}>{exp.description}</p>
+                  
+                  <div className={styles.techStack}>
+                    {exp.tech.map((t, i) => (
+                      <span key={i} className={styles.techTag}>{t}</span>
+                    ))}
                   </div>
                 </motion.div>
-              </div>
-              <div className={styles.info}>
-                <span className={styles.category}>{project.category}</span>
-                <h4 className={styles.projectTitle}>{project.title}</h4>
-                <p className={styles.description}>{project.description}</p>
-                <div className={styles.techStack}>
-                  {project.tech.map((t, i) => (
-                    <motion.span 
-                      key={i} 
-                      whileHover={{ scale: 1.1, backgroundColor: "var(--accent-color)", color: "white" }}
-                      className={styles.tech}
-                    >
-                      {t}
-                    </motion.span>
-                  ))}
+
+                {/* Center Column with Dot */}
+                <div className={styles.centerCol}>
+                  <div className={styles.dot}></div>
                 </div>
+
+                {/* Empty Side (Maintaining the vertical axis) */}
+                <div className={styles.emptySide}></div>
+
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

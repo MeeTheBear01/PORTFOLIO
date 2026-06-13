@@ -3,13 +3,14 @@ import styles from './Hero.module.css';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import ThreeScene from './ThreeScene';
 import MeImage from '../assets/Me.png';
+import resumeFile from '../assets/Resume_Thai.pdf';
 import { Award, Code2, Rocket } from 'lucide-react';
 
 const phrases = [
-  "Creative Full Stack Developer",
-  "UI/UX Enthusiast",
-  "Problem Solver",
-  "Passionate Web Builder"
+  "Full Stack Developer",
+  "React & Node.js Expert",
+  "ASP.NET & SQL Specialist",
+  "Web Application Builder"
 ];
 
 const Typewriter: FC = () => {
@@ -112,7 +113,7 @@ const Hero: FC = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className={styles.name}
             >
-              Thara <span>.P</span>
+              Thara <span>Pholudom</span>
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, x: -50 }}
@@ -121,6 +122,16 @@ const Hero: FC = () => {
               className={styles.title}
             >
               <Typewriter />
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className={styles.description}
+              style={{ color: 'rgba(255, 255, 255, 0.7)', marginTop: '1rem', fontSize: '1.1rem' }}
+            >
+              3 years of experience in building and developing modern 
+              web applications that solve business problems.
             </motion.p>
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -131,10 +142,12 @@ const Hero: FC = () => {
               <motion.a 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="#works" 
+                href={resumeFile}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={styles.buttonPrimary}
               >
-                View My Works
+                Download CV
               </motion.a>
               <motion.a 
                 whileHover={{ scale: 1.05 }}
@@ -160,7 +173,7 @@ const Hero: FC = () => {
               className={styles.imageContainer}
               style={{ rotateX, rotateY }}
             >
-              <img src={MeImage} alt="Thara .P" className={styles.heroImage} />
+              <img src={MeImage} alt="Thara Pholudom" className={styles.heroImage} />
               
               {/* Info Badges */}
               <motion.div 
@@ -172,7 +185,7 @@ const Hero: FC = () => {
                 <div className={styles.badgeIcon}><Code2 size={18} /></div>
                 <div className={styles.badgeText}>
                   <span className={styles.badgeTitle}>Experience</span>
-                  <span className={styles.badgeValue}>2+ Years</span>
+                  <span className={styles.badgeValue}>3 Years</span>
                 </div>
               </motion.div>
 

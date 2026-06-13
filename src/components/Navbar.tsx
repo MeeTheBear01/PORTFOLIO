@@ -1,6 +1,7 @@
 import { type FC } from 'react';
 import styles from './Navbar.module.css';
 import { motion } from 'framer-motion';
+import resumeFile from '../assets/Resume_Thai.pdf';
 
 const Navbar: FC = () => {
   return (
@@ -12,7 +13,7 @@ const Navbar: FC = () => {
     >
       <div className={`container ${styles.navContainer}`}>
         <div className={styles.logo}>
-          <a href="#home">PORTFOLIO<span>.</span></a>
+          <a href="#home">THARA<span>.</span></a>
         </div>
         <ul className={styles.navLinks}>
           <li><a href="#home">Home</a></li>
@@ -21,7 +22,7 @@ const Navbar: FC = () => {
           <li><a href="#contact">Contact</a></li>
         </ul>
         <div>
-          <a href="#" className={styles.resumeBtn}>My Resume</a>
+          <a href={resumeFile} target="_blank" rel="noopener noreferrer" className={styles.resumeBtn}>My Resume</a>
         </div>
       </div>
     </motion.nav>

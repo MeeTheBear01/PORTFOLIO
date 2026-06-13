@@ -25,7 +25,47 @@
 .bio {
   font-size: 1.15rem;
   color: var(--text-dim);
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+  background: var(--glass-bg);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid var(--glass-border);
+}
+
+.contactItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.contactItem strong {
+  font-size: 0.9rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.contactItem span, .contactItem a {
+  font-size: 1.1rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.contactItem a:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 600px) {
+  .contactGrid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .skillContainer {
