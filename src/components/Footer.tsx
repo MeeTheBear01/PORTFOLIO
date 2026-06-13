@@ -21,15 +21,15 @@ const Footer: FC = () => {
             </a>
           </motion.div>
           
-          <div className={styles.socials}>
+        <div className={styles.socials}>
             <a href="#" aria-label="Line" className={styles.socialLink}><LineIcon /></a>
             <a href="#" aria-label="Facebook" className={styles.socialLink}><FacebookIcon /></a>
-            <a href="#" aria-label="GitHub" className={styles.socialLink}><GithubIcon /></a>
+            <a href="https://github.com/MeeTheBear01" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className={styles.socialLink}><GithubIcon /></a>
           </div>
         </div>
         
         <div className={styles.bottom}>
-          <p>© {new Date().getFullYear()} Thara .P All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Thara Pholudom. All rights reserved.</p>
           <ul className={styles.footerLinks}>
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>

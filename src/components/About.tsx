@@ -3,17 +3,21 @@ import styles from './About.module.css';
 import { motion } from 'framer-motion';
 
 const skills = [
-  { name: 'ASP.Net', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg' },
-  { name: 'React.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+  // Frontend
+  { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
   { name: 'Next.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
-  { name: 'Javascript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-  { name: 'HTML', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
-  { name: 'CSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+  { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
+  { name: 'Redux', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg' },
+  { name: 'Ant Design', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/antdesign/antdesign-original.svg' },
+  // Backend
   { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-  { name: 'VB.net', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg' },
-  { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+  { name: 'ASP.NET Core', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg' },
+  { name: 'VB.NET', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg' },
+  // Database
   { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
   { name: 'SQL Server', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg' },
+  { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+  { name: 'Redis', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg' },
 ];
 
 const About: FC = () => {
@@ -47,17 +51,28 @@ const About: FC = () => {
         >
           <div className={styles.top}>
             <motion.h3 variants={itemVariants} className={styles.sectionTitle}>About Me</motion.h3>
-            <motion.p variants={itemVariants} className={styles.bio}>
-              I'm a passionate developer dedicated to creating high-performance,
-              user-centric digital experiences. With a strong foundation in modern
-              web technologies, I love turning complex problems into elegant
-              code and stunning visuals.
-            </motion.p>
-            <motion.p variants={itemVariants} className={styles.bio}>
-              My journey in tech is driven by curiosity and a relentless
-              pursuit of quality. I thrive in environments that challenge
-              my creativity and push me to learn new things every day.
-            </motion.p>
+            <motion.div variants={itemVariants} className={styles.bioContainer}>
+              <p className={styles.bio}>
+                I am a Web Application Developer with 3 years of experience in building and developing 
+                modern web applications. I am passionate about learning new technologies to continuously 
+                improve myself and apply them effectively to create value for organizations.
+              </p>
+              
+              <div className={styles.contactGrid}>
+                <div className={styles.contactItem}>
+                  <strong>Location:</strong> <span>Nong Chok, Bangkok 10530</span>
+                </div>
+                <div className={styles.contactItem}>
+                  <strong>Email:</strong> <span>thara.pholudom@gmail.com</span>
+                </div>
+                <div className={styles.contactItem}>
+                  <strong>Phone:</strong> <span>082-669-8187</span>
+                </div>
+                <div className={styles.contactItem}>
+                  <strong>GitHub:</strong> <a href="https://github.com/MeeTheBear01" target="_blank" rel="noopener noreferrer">github.com/MeeTheBear01</a>
+                </div>
+              </div>
+            </motion.div>
           </div>
 
           <div className={styles.bottom}>
