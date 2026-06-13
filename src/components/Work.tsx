@@ -42,7 +42,7 @@ const projects = [
   },
   {
     id: 7,
-    title: 'AI Dashboar',
+    title: 'AI Dashboard',
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=2070',
     description: 'Next-gen analytics platform powered by artificial intelligence.'
   }
