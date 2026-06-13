@@ -2,6 +2,7 @@ import { type FC, useState, useEffect } from 'react';
 import styles from './Hero.module.css';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import ThreeScene from './ThreeScene';
+import MeImage from '../assets/Me.png';
 import { Award, Code2, Rocket } from 'lucide-react';
 
 const phrases = [
@@ -159,7 +160,7 @@ const Hero: FC = () => {
               className={styles.imageContainer}
               style={{ rotateX, rotateY }}
             >
-              <img src="/src/assets/Me.png" alt="Thara .P" className={styles.heroImage} />
+              <img src={MeImage} alt="Thara .P" className={styles.heroImage} />
               
               {/* Info Badges */}
               <motion.div 
