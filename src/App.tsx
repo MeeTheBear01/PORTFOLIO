@@ -32,7 +32,7 @@ function App() {
       />
       <div className="animated-bg"></div>
       <Navbar />
-      <main>
+      <main aria-label="Portfolio content">
         <Hero />
         <About />
         <Portfolio />
