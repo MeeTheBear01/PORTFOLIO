@@ -1,0 +1,151 @@
+<svg width="1440" height="1200" viewBox="0 0 1440 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1440" y2="1200" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#05070A"/>
+      <stop offset="0.42" stop-color="#07121D"/>
+      <stop offset="0.72" stop-color="#0B0D12"/>
+      <stop offset="1" stop-color="#050505"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#48E5C2"/>
+      <stop offset="0.55" stop-color="#57A6FF"/>
+      <stop offset="1" stop-color="#F2CA50"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#F6D66B"/>
+      <stop offset="1" stop-color="#C7992A"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1030 390) rotate(127) scale(520 420)">
+      <stop stop-color="#48E5C2" stop-opacity="0.28"/>
+      <stop offset="0.48" stop-color="#57A6FF" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#05070A" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="24" stdDeviation="32" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.28 0 0 0 0 0.75 0 0 0 0 0.94 0 0 0 0.45 0"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <clipPath id="portraitClip">
+      <path d="M949 210C1048 177 1160 216 1204 305C1248 394 1224 522 1132 581C1040 640 882 632 827 533C772 434 850 243 949 210Z"/>
+    </clipPath>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" stroke="white" stroke-opacity="0.045"/>
+    </pattern>
+  </defs>
+
+  <rect width="1440" height="1200" fill="url(#bg)"/>
+  <rect width="1440" height="900" fill="url(#grid)" opacity="0.8"/>
+  <rect width="1440" height="900" fill="url(#halo)"/>
+
+  <path d="M88 948C276 881 456 892 646 946C830 999 1036 1001 1352 880" stroke="url(#accent)" stroke-opacity="0.24" stroke-width="1.4"/>
+  <path d="M114 998C336 927 522 964 722 1019C919 1074 1111 1032 1330 936" stroke="#F2CA50" stroke-opacity="0.11" stroke-width="1.2"/>
+
+  <g>
+    <rect x="56" y="24" width="1328" height="72" rx="24" fill="#071018" fill-opacity="0.76" stroke="white" stroke-opacity="0.08"/>
+    <text x="96" y="69" fill="#F8FAFC" font-family="Inter, Segoe UI, Arial" font-size="22" font-weight="800">THARA<tspan fill="#48E5C2">.</tspan></text>
+    <g fill="#9AA8B5" font-family="Inter, Segoe UI, Arial" font-size="14" font-weight="600">
+      <text x="605" y="67">Home</text>
+      <text x="676" y="67">About</text>
+      <text x="748" y="67">Works</text>
+      <text x="822" y="67">Contact</text>
+    </g>
+    <rect x="1208" y="41" width="128" height="38" rx="19" fill="#0C1721" stroke="#48E5C2" stroke-opacity="0.55"/>
+    <text x="1236" y="65" fill="#DDFCF6" font-family="Inter, Segoe UI, Arial" font-size="13" font-weight="800">Resume</text>
+  </g>
+
+  <g transform="translate(96 176)">
+    <rect x="0" y="0" width="212" height="34" rx="17" fill="#0F1B24" stroke="white" stroke-opacity="0.08"/>
+    <circle cx="18" cy="17" r="5" fill="#48E5C2" filter="url(#glow)"/>
+    <text x="34" y="22" fill="#B6F9EC" font-family="Inter, Segoe UI, Arial" font-size="13" font-weight="800" letter-spacing="1">AVAILABLE FOR WORK</text>
+  </g>
+
+  <g transform="translate(96 238)">
+    <text x="0" y="62" fill="#F8FAFC" font-family="Inter, Segoe UI, Arial" font-size="78" font-weight="900">Thara</text>
+    <text x="0" y="150" fill="#F8FAFC" font-family="Inter, Segoe UI, Arial" font-size="78" font-weight="900">Pholudom</text>
+    <rect x="5" y="176" width="432" height="6" rx="3" fill="url(#accent)"/>
+    <text x="0" y="226" fill="#48E5C2" font-family="Inter, Segoe UI, Arial" font-size="28" font-weight="800">Full Stack Developer</text>
+    <text x="0" y="277" fill="#B8C3CC" font-family="Inter, Segoe UI, Arial" font-size="20">
+      <tspan x="0" dy="0">Building practical web applications with React,</tspan>
+      <tspan x="0" dy="34">Node.js, ASP.NET Core, SQL Server, and clean UI systems.</tspan>
+    </text>
+
+    <g transform="translate(0 350)">
+      <rect x="0" y="0" width="164" height="54" rx="27" fill="url(#accent)" filter="url(#softShadow)"/>
+      <text x="33" y="34" fill="#031014" font-family="Inter, Segoe UI, Arial" font-size="15" font-weight="900">View Work</text>
+      <rect x="182" y="0" width="154" height="54" rx="27" fill="#0C151D" stroke="white" stroke-opacity="0.12"/>
+      <text x="222" y="34" fill="#F8FAFC" font-family="Inter, Segoe UI, Arial" font-size="15" font-weight="800">Contact</text>
+    </g>
+  </g>
+
+  <g transform="translate(96 720)">
+    <rect x="0" y="0" width="590" height="118" rx="28" fill="#071018" fill-opacity="0.82" stroke="white" stroke-opacity="0.08"/>
+    <g transform="translate(34 28)">
+      <text x="0" y="22" fill="#F8FAFC" font-family="Inter, Segoe UI, Arial" font-size="28" font-weight="900">3+</text>
+      <text x="0" y="55" fill="#8F9FAA" font-family="Inter, Segoe UI, Arial" font-size="13" font-weight="700">Years experience</text>
+    </g>
+    <line x1="183" y1="28" x2="183" y2="90" stroke="white" stroke-opacity="0.09"/>
+    <g transform="translate(225 28)">
+      <text x="0" y="22" fill="#F8FAFC" font-family="Inter, Segoe UI, Arial" font-size="28" font-weight="900">20+</text>
+      <text x="0" y="55" fill="#8F9FAA" font-family="Inter, Segoe UI, Arial" font-size="13" font-weight="700">Projects delivered</text>
+    </g>
+    <line x1="392" y1="28" x2="392" y2="90" stroke="white" stroke-opacity="0.09"/>
+    <g transform="translate(434 28)">
+      <text x="0" y="22" fill="#F8FAFC" font-family="Inter, Segoe UI, Arial" font-size="28" font-weight="900">12</text>
+      <text x="0" y="55" fill="#8F9FAA" font-family="Inter, Segoe UI, Arial" font-size="13" font-weight="700">Core technologies</text>
+    </g>
+  </g>
+
+  <g transform="translate(790 162)">
+    <path d="M161 48C260 15 372 54 416 143C460 232 436 360 344 419C252 478 94 470 39 371C-16 272 62 81 161 48Z" fill="#0C151C" stroke="url(#accent)" stroke-width="2" filter="url(#softShadow)"/>
+    <g clip-path="url(#portraitClip)" transform="translate(-788 -162)">
+      <image href="../src/assets/Me.png" x="770" y="116" width="500" height="570" preserveAspectRatio="xMidYMid slice"/>
+      <rect x="770" y="116" width="500" height="570" fill="url(#halo)" opacity="0.25"/>
+    </g>
+    <path d="M161 48C260 15 372 54 416 143C460 232 436 360 344 419C252 478 94 470 39 371C-16 272 62 81 161 48Z" stroke="white" stroke-opacity="0.16" stroke-width="1.2"/>
+
+    <g transform="translate(-36 144)">
+      <rect width="184" height="72" rx="18" fill="#071018" fill-opacity="0.88" stroke="white" stroke-opacity="0.12"/>
+      <rect x="18" y="18" width="36" height="36" rx="11" fill="#102C35"/>
+      <text x="70" y="32" fill="#8F9FAA" font-family="Inter, Segoe UI, Arial" font-size="11" font-weight="800">EXPERIENCE</text>
+      <text x="70" y="52" fill="#F8FAFC" font-family="Inter, Segoe UI, Arial" font-size="17" font-weight="900">3 Years</text>
+      <path d="M30 38L38 28L46 38" stroke="#48E5C2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+
+    <g transform="translate(344 286)">
+      <rect width="176" height="72" rx="18" fill="#071018" fill-opacity="0.88" stroke="white" stroke-opacity="0.12"/>
+      <rect x="18" y="18" width="36" height="36" rx="11" fill="#2E2815"/>
+      <text x="70" y="32" fill="#8F9FAA" font-family="Inter, Segoe UI, Arial" font-size="11" font-weight="800">STATUS</text>
+      <text x="70" y="52" fill="#F8FAFC" font-family="Inter, Segoe UI, Arial" font-size="17" font-weight="900">Available</text>
+      <circle cx="36" cy="36" r="8" fill="#F2CA50"/>
+    </g>
+  </g>
+
+  <g transform="translate(96 935)">
+    <text x="0" y="0" fill="#48E5C2" font-family="Inter, Segoe UI, Arial" font-size="14" font-weight="900" letter-spacing="1">PROFESSIONAL JOURNEY</text>
+    <text x="0" y="54" fill="#F8FAFC" font-family="Inter, Segoe UI, Arial" font-size="42" font-weight="900">Recent Experience</text>
+    <g transform="translate(0 94)">
+      <rect x="0" y="0" width="388" height="116" rx="22" fill="#071018" fill-opacity="0.86" stroke="white" stroke-opacity="0.08"/>
+      <text x="26" y="34" fill="#F2CA50" font-family="Inter, Segoe UI, Arial" font-size="12" font-weight="900">OCT 2025 - JUN 2026</text>
+      <text x="26" y="65" fill="#F8FAFC" font-family="Inter, Segoe UI, Arial" font-size="20" font-weight="900">TigerSoft (1998) Co., Ltd.</text>
+      <text x="26" y="91" fill="#9AA8B5" font-family="Inter, Segoe UI, Arial" font-size="14" font-weight="700">Full Stack Developer</text>
+    </g>
+    <g transform="translate(420 94)">
+      <rect x="0" y="0" width="388" height="116" rx="22" fill="#071018" fill-opacity="0.72" stroke="white" stroke-opacity="0.08"/>
+      <text x="26" y="34" fill="#57A6FF" font-family="Inter, Segoe UI, Arial" font-size="12" font-weight="900">FEB 2025 - SEP 2025</text>
+      <text x="26" y="65" fill="#F8FAFC" font-family="Inter, Segoe UI, Arial" font-size="20" font-weight="900">Wisdom Want Industrial</text>
+      <text x="26" y="91" fill="#9AA8B5" font-family="Inter, Segoe UI, Arial" font-size="14" font-weight="700">React, Node.js, PostgreSQL</text>
+    </g>
+    <g transform="translate(840 94)">
+      <rect x="0" y="0" width="388" height="116" rx="22" fill="#071018" fill-opacity="0.58" stroke="white" stroke-opacity="0.08"/>
+      <text x="26" y="34" fill="#48E5C2" font-family="Inter, Segoe UI, Arial" font-size="12" font-weight="900">APR 2024 - NOV 2024</text>
+      <text x="26" y="65" fill="#F8FAFC" font-family="Inter, Segoe UI, Arial" font-size="20" font-weight="900">V.SIRIKAN AUTOPARTS</text>
+      <text x="26" y="91" fill="#9AA8B5" font-family="Inter, Segoe UI, Arial" font-size="14" font-weight="700">ASP.NET Core, SQL Server</text>
+    </g>
+  </g>
+</svg>
