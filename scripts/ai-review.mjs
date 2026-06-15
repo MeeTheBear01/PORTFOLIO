@@ -264,6 +264,11 @@ async function main() {
     const errorText = await response.text()
     console.error(`GitHub Models request failed: ${response.status} ${response.statusText}`)
     console.error(errorText)
+    if (response.status === 403) {
+      console.error(
+        '\nEnable GitHub Models in repo settings: Settings -> Models -> set "Models in this repository" to Enabled.',
+      )
+    }
     process.exit(1)
   }
 
