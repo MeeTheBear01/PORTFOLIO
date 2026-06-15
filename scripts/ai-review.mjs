@@ -132,7 +132,7 @@ async function upsertPullRequestComment(markdown) {
       headers: {
         Authorization: `Bearer ${githubToken}`,
         Accept: 'application/vnd.github+json',
-        'X-GitHub-Api-Version': '2026-03-10',
+        'X-GitHub-Api-Version': '2022-11-28',
       },
     },
   )
@@ -162,7 +162,7 @@ async function upsertPullRequestComment(markdown) {
       Authorization: `Bearer ${githubToken}`,
       Accept: 'application/vnd.github+json',
       'Content-Type': 'application/json',
-      'X-GitHub-Api-Version': '2026-03-10',
+      'X-GitHub-Api-Version': '2022-11-28',
     },
     body: JSON.stringify({ body: markdown }),
   })
