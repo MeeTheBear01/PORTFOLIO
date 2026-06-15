@@ -43,6 +43,15 @@ export default defineConfig([
 ])
 ```
 
+## CI/CD and AI Review
+
+- `CI/CD` runs on every pull request and on pushes to `main`.
+- `lint` and `build` must pass before deploy.
+- `Deploy` publishes the built app to GitHub Pages from `dist`.
+- `AI Code Review` runs on pull requests, uses GitHub Models for free, and posts one summary comment back to the PR.
+
+To tune the review model, set an optional `REVIEW_MODEL` repository variable. The workflow uses the built-in `GITHUB_TOKEN`, so no external API key is required.
+
 You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
 ```js
