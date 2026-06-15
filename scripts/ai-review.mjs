@@ -66,6 +66,13 @@ function writeSummary(markdown) {
   }
 }
 
+function parseReviewJson(rawContent) {
+  const trimmed = rawContent.trim()
+  const fenced = trimmed.match(/^```(?:json)?\s*([\s\S]*?)\s*```$/i)
+  const candidate = fenced ? fenced[1].trim() : trimmed
+  return JSON.parse(candidate)
+}
+
 function loadRubric() {
   if (!fs.existsSync(rubricPath)) {
     return ''
@@ -241,6 +248,7 @@ async function main() {
     body: JSON.stringify({
       model: DEFAULT_MODEL,
       temperature: 0.1,
+      response_format: { type: 'json_object' },
       messages: [
         {
           role: 'system',
@@ -268,7 +276,7 @@ async function main() {
 
   let review
   try {
-    review = JSON.parse(rawContent)
+    review = parseReviewJson(rawContent)
   } catch (error) {
     console.error('Failed to parse AI review as JSON.')
     console.error(rawContent)
