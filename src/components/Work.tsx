@@ -3,33 +3,39 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import styles from './Work.module.css';
 
+// Images are served from the public folder at the site root.
+// Using plain URL strings ensures they resolve correctly.
+
+
 const experiences = [
   {
     id: 1,
     company: 'Rent Car Web Application',
-    image: './public/Rent_car_web.png',
+    image: '/Rent_car_web.png',
     role: 'Frontend : NextJS',
-    description: 'BackEnd : C#,ASP.NET Core Web API'
+    description: 'BackEnd : C#,ASP.NET Core Web API',
   },
   {
     id: 2,
     company: 'Cat Hotel Web Application',
-    image: './public/Cat_hotel_web.png',
+    image: '/Cat_hotel_web.png',
     role: 'Frontend : NextJS',
-    description: 'BackEnd : Go.Lang, SqlLite'
+    description: 'BackEnd : Go.Lang, SqlLite',
   },
   {
     id: 3,
     company: 'Game Web Application',
-    image: './public/Game_web.png',
+    image: '/Game_web.png',
     role: 'Frontend : NextJS',
-    description: 'https://thai-exercise.vercel.app/'
-  }
+    description: 'https://thai-exercise.vercel.app/',
+  },
 ];
 
 const Work = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isClicking, setIsClicking] = useState("");
+  const [isClicking, setIsClicking] = useState('');
+  const [imageError, setImageError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const trackRef = useRef<HTMLUListElement>(null);
   const activeExp = experiences[currentIndex];
 
@@ -69,7 +75,8 @@ const Work = () => {
     const items = trackRef.current.querySelectorAll('li');
     const target = items[index];
     if (target) {
-      const offset = target.offsetLeft - (trackRef.current.offsetWidth / 2) + (target.offsetWidth / 2);
+      const offset =
+        target.offsetLeft - trackRef.current.offsetWidth / 2 + target.offsetWidth / 2;
       trackRef.current.scrollTo({ left: offset, behavior: 'smooth' });
     }
   };
@@ -77,13 +84,23 @@ const Work = () => {
   const nextProject = () => {
     const nextIndex = (currentIndex + 1) % experiences.length;
     scrollToProject(nextIndex);
-    setIsClicking("next");
+    setIsClicking('next');
   };
 
   const prevProject = () => {
     const prevIndex = (currentIndex - 1 + experiences.length) % experiences.length;
     scrollToProject(prevIndex);
-    setIsClicking("prev");
+    setIsClicking('prev');
+  };
+
+  const handleImageLoad = () => {
+    setIsLoading(false);
+    setImageError(false);
+  };
+
+  const handleImageError = () => {
+    setIsLoading(false);
+    setImageError(true);
   };
 
   return (
@@ -98,7 +115,7 @@ const Work = () => {
         </motion.h3>
 
         <div className={styles.mainLayout}>
-          {/* 1. Navigation Arrows */}
+          {/* Navigation arrows */}
           <button className={`${styles.navBtn} ${styles.prevBtn}`} onClick={prevProject}>
             <ChevronLeft size={40} />
           </button>
@@ -107,7 +124,7 @@ const Work = () => {
             <ChevronRight size={40} />
           </button>
 
-          {/* 2. MacBook Part (Middle) */}
+          {/* MacBook display (center) */}
           <div className={styles.centerContainer}>
             <div className={styles.macbookDisplay}>
               <div className={styles.macbookScreen}>
@@ -116,12 +133,24 @@ const Work = () => {
                     key={activeExp.id}
                     initial={{ opacity: 0, scale: 1.1 }}
                     animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: isClicking === "next" ? -50 : 50}}
+                    exit={{ opacity: 0, x: isClicking === 'next' ? -50 : 50 }}
                     transition={{ duration: 0.3 }}
                     src={activeExp.image}
-                    alt={activeExp.company}
+                    alt={`${activeExp.company}: ${activeExp.role}`}
                     className={styles.screenImage}
+                    onLoad={handleImageLoad}
+                    onError={handleImageError}
                   />
+                  {isLoading && !imageError && (
+                    <div className={styles.screenImage} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      Loading…
+                    </div>
+                  )}
+                  {imageError && (
+                    <div className={styles.screenImage} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      Image not available
+                    </div>
+                  )}
                 </AnimatePresence>
                 <div className={styles.menubar}></div>
                 <div className={styles.dock}>
@@ -142,7 +171,7 @@ const Work = () => {
             <div className={styles.compBottom}></div>
           </div>
 
-          {/* 3. Slider Track Part (Overlapping with MacBook) */}
+          {/* Slider track (thumbnails) */}
           <div className={styles.trackWrapper}>
             <ul className={styles.track} ref={trackRef}>
               {experiences.map((exp, index) => (
@@ -151,14 +180,19 @@ const Work = () => {
                   className={`${styles.trackItem} ${currentIndex === index ? styles.active : ''}`}
                   onClick={() => scrollToProject(index)}
                 >
-                  <img src={exp.image} alt={exp.company} />
+                  <img
+                    src={exp.image}
+                    alt={`${exp.company}: ${exp.role}`}
+                    onLoad={handleImageLoad}
+                    onError={handleImageError}
+                  />
                 </li>
               ))}
             </ul>
           </div>
         </div>
 
-        {/* 4. Active Project Information */}
+        {/* Project info */}
         <AnimatePresence mode="wait">
           <motion.div
             key={`info-${activeExp.id}`}
