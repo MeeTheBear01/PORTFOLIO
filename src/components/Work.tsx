@@ -6,43 +6,24 @@ import styles from './Work.module.css';
 const experiences = [
   {
     id: 1,
-    company: 'TigerSoft (1998) Co., Ltd.',
-    period: 'October 2025 - June 2026',
-    role: 'Full Stack Developer',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2426',
-    description: 'Developed and maintained HRM web applications using VB.NET, SQL Server, HTML, CSS, and JavaScript. Developed APIs and implemented unit testing with NUnit.'
+    company: 'Rent Car Web Application',
+    image: './public/Rent_car_web.png',
+    role: 'Frontend : NextJS',
+    description: 'BackEnd : C#,ASP.NET Core Web API'
   },
   {
     id: 2,
-    company: 'Wisdom Want Industrial Co., Ltd.',
-    period: 'February 2025 - September 2025',
-    role: 'Full Stack Developer',
-    image: 'https://images.unsplash.com/photo-1454165833767-0266b196773f?auto=format&fit=crop&q=80&w=2070',
-    description: 'Built web applications using React, NodeJS, PostgreSQL, MongoDB, and Redis. Maintained legacy systems with ASP.NET Core and designed user-friendly UIs.'
+    company: 'Cat Hotel Web Application',
+    image: './public/Cat_hotel_web.png',
+    role: 'Frontend : NextJS',
+    description: 'BackEnd : Go.Lang, SqlLite'
   },
   {
     id: 3,
-    company: 'W.Siriparn Autoparts Co., Ltd.',
-    period: 'April 2024 - November 2024',
-    role: 'Full Stack Developer',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2070',
-    description: 'Developed web applications using ASP.NET Core, SQL Server, and React. Created reports with Microsoft Report Builder and managed printing systems via Raspberry Pi.'
-  },
-  {
-    id: 4,
-    company: 'Top Provider Systems & Supply',
-    period: 'August 2022 - October 2022',
-    role: 'Frontend Developer',
-    image: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=2070',
-    description: 'Developed a Hospital Management Web Application using ReactJS based on specific designs and requirements. Integrated REST APIs for data management.'
-  },
-  {
-    id: 5,
-    company: 'Nattachat Co., Ltd.',
-    period: 'March 2022 - July 2022',
-    role: 'Frontend Developer',
-    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=2072',
-    description: 'Created web applications using React.js and NextJS. Developed user interfaces based on design specifications and connected with backend APIs.'
+    company: 'Game Web Application',
+    image: './public/Game_web.png',
+    role: 'Frontend : NextJS',
+    description: 'https://thai-exercise.vercel.app/'
   }
 ];
 
@@ -113,7 +94,7 @@ const Work = () => {
           whileInView={{ opacity: 1, y: 0 }}
           className={styles.sectionTitle}
         >
-          Work Experience
+          My Portfolio
         </motion.h3>
 
         <div className={styles.mainLayout}>
@@ -186,7 +167,6 @@ const Work = () => {
             exit={{ opacity: 0, y: -20 }}
             className={styles.activeInfo}
           >
-            <span className={styles.period}>{activeExp.period}</span>
             <h4>{activeExp.company}</h4>
             <h5 className={styles.role}>{activeExp.role}</h5>
             <p>{activeExp.description}</p>
