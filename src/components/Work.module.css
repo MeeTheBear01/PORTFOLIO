@@ -8,6 +8,15 @@
   align-items: center;
 }
 
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
 .sectionTitle {
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 900;
@@ -280,6 +289,10 @@
 
 .prevBtn { left: 10px; }
 .nextBtn { right: 10px; }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
 
 @keyframes shine1 {
   0%, 100% { filter: drop-shadow(-10px 40px 30px #dfdfdf50); }
