@@ -3,10 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import styles from './Work.module.css';
 
-// Images are served from the public folder at the site root.
-// Using plain URL strings ensures they resolve correctly.
-
-
 const experiences = [
   {
     id: 1,
@@ -34,10 +30,15 @@ const experiences = [
 const Work = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isClicking, setIsClicking] = useState('');
-  const [imageError, setImageError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [imageError, setImageError] = useState(false);
   const trackRef = useRef<HTMLUListElement>(null);
   const activeExp = experiences[currentIndex];
+
+  useEffect(() => {
+    setIsLoading(true);
+    setImageError(false);
+  }, [currentIndex]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,9 +65,7 @@ const Work = () => {
     };
 
     const track = trackRef.current;
-    if (track) {
-      track.addEventListener('scroll', handleScroll);
-    }
+    if (track) track.addEventListener('scroll', handleScroll);
     return () => track?.removeEventListener('scroll', handleScroll);
   }, [currentIndex]);
 
@@ -93,6 +92,7 @@ const Work = () => {
     setIsClicking('prev');
   };
 
+  // ✅ ชื่อ state ตรงกันแล้ว
   const handleImageLoad = () => {
     setIsLoading(false);
     setImageError(false);
@@ -115,63 +115,85 @@ const Work = () => {
         </motion.h3>
 
         <div className={styles.mainLayout}>
-          {/* Navigation arrows */}
           <button className={`${styles.navBtn} ${styles.prevBtn}`} onClick={prevProject}>
             <ChevronLeft size={40} />
           </button>
-
           <button className={`${styles.navBtn} ${styles.nextBtn}`} onClick={nextProject}>
             <ChevronRight size={40} />
           </button>
 
-          {/* MacBook display (center) */}
           <div className={styles.centerContainer}>
             <div className={styles.macbookDisplay}>
               <div className={styles.macbookScreen}>
+                {/* ✅ แยก overlay ออกจาก AnimatePresence เพื่อไม่ให้ชนกัน */}
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={activeExp.id}
                     initial={{ opacity: 0, scale: 1.1 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    animate={{ opacity: isLoading || imageError ? 0 : 1, x: 0 }}
                     exit={{ opacity: 0, x: isClicking === 'next' ? -50 : 50 }}
                     transition={{ duration: 0.3 }}
                     src={activeExp.image}
-                    alt={`${activeExp.company}: ${activeExp.role}`}
+                    alt={`ภาพโปรเจกต์ ${activeExp.company} — ${activeExp.role}`}
                     className={styles.screenImage}
                     onLoad={handleImageLoad}
                     onError={handleImageError}
                   />
-                  {isLoading && !imageError && (
-                    <div className={styles.screenImage} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      Loading…
-                    </div>
-                  )}
-                  {imageError && (
-                    <div className={styles.screenImage} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      Image not available
-                    </div>
-                  )}
                 </AnimatePresence>
-                <div className={styles.menubar}></div>
+
+                {/* ✅ Loading overlay แยกต่างหาก */}
+                {isLoading && !imageError && (
+                  <div
+                    className={styles.screenImage}
+                    style={{
+                      position: 'absolute',
+                      inset: 0,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    Loading…
+                  </div>
+                )}
+
+                {/* ✅ Error overlay แยกต่างหาก */}
+                {imageError && (
+                  <div
+                    className={styles.screenImage}
+                    style={{
+                      position: 'absolute',
+                      inset: 0,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    Image not available
+                  </div>
+                )}
+
+                <div className={styles.menubar} />
                 <div className={styles.dock}>
+                  {/* ✅ ใช้ stable key แทน index */}
                   {[...Array(10)].map((_, i) => (
-                    <div key={i} className={styles.dockIcon}></div>
+                    <div key={`dock-${i}`} className={styles.dockIcon} />
                   ))}
                 </div>
               </div>
               <span className={styles.macLabel}>Experience Showcase</span>
             </div>
             <div className={styles.keys}>
-              <div className={styles.board}></div>
-              <div className={styles.touchpad}></div>
+              <div className={styles.board} />
+              <div className={styles.touchpad} />
             </div>
             <div className={styles.comp}>
-              <div className={styles.notch}></div>
+              <div className={styles.notch} />
             </div>
-            <div className={styles.compBottom}></div>
+            <div className={styles.compBottom} />
           </div>
 
-          {/* Slider track (thumbnails) */}
+          {/* ✅ Thumbnail ใช้ handler แยก ไม่กระทบ state ภาพหลัก */}
           <div className={styles.trackWrapper}>
             <ul className={styles.track} ref={trackRef}>
               {experiences.map((exp, index) => (
@@ -183,8 +205,9 @@ const Work = () => {
                   <img
                     src={exp.image}
                     alt={`${exp.company}: ${exp.role}`}
-                    onLoad={handleImageLoad}
-                    onError={handleImageError}
+                    onError={(e) => {
+                      e.currentTarget.style.visibility = 'hidden';
+                    }}
                   />
                 </li>
               ))}
@@ -192,7 +215,6 @@ const Work = () => {
           </div>
         </div>
 
-        {/* Project info */}
         <AnimatePresence mode="wait">
           <motion.div
             key={`info-${activeExp.id}`}
