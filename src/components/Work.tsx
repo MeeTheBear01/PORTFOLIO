@@ -7,21 +7,21 @@ const experiences = [
   {
     id: 1,
     company: 'Rent Car Web Application',
-    image: '/Rent_car_web.png',
+    image: './public/Rent_car_web.png',
     role: 'Frontend : NextJS',
     description: 'BackEnd : C#,ASP.NET Core Web API',
   },
   {
     id: 2,
     company: 'Cat Hotel Web Application',
-    image: '/Cat_hotel_web.png',
+    image: './public/Cat_hotel_web.png',
     role: 'Frontend : NextJS',
     description: 'BackEnd : Go.Lang, SqlLite',
   },
   {
     id: 3,
     company: 'Game Web Application',
-    image: '/Game_web.png',
+    image: './public/Game_web.png',
     role: 'Frontend : NextJS',
     description: 'https://thai-exercise.vercel.app/',
   },
@@ -34,11 +34,6 @@ const Work = () => {
   const [imageError, setImageError] = useState(false);
   const trackRef = useRef<HTMLUListElement>(null);
   const activeExp = experiences[currentIndex];
-
-  useEffect(() => {
-    setIsLoading(true);
-    setImageError(false);
-  }, [currentIndex]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,6 +56,8 @@ const Work = () => {
 
       if (newIndex !== currentIndex) {
         setCurrentIndex(newIndex);
+        setIsLoading(true);
+        setImageError(false);
       }
     };
 
@@ -71,6 +68,8 @@ const Work = () => {
 
   const scrollToProject = (index: number) => {
     if (!trackRef.current) return;
+    setIsLoading(true);
+    setImageError(false);
     const items = trackRef.current.querySelectorAll('li');
     const target = items[index];
     if (target) {
@@ -114,11 +113,24 @@ const Work = () => {
           My Portfolio
         </motion.h3>
 
-        <div className={styles.mainLayout}>
-          <button className={`${styles.navBtn} ${styles.prevBtn}`} onClick={prevProject}>
+        <div
+          className={styles.mainLayout}
+          role="region"
+          aria-label="Portfolio carousel"
+          aria-roledescription="carousel"
+        >
+          <button
+            className={`${styles.navBtn} ${styles.prevBtn}`}
+            onClick={prevProject}
+            aria-label="โปรเจกต์ก่อนหน้า"
+          >
             <ChevronLeft size={40} />
           </button>
-          <button className={`${styles.navBtn} ${styles.nextBtn}`} onClick={nextProject}>
+          <button
+            className={`${styles.navBtn} ${styles.nextBtn}`}
+            onClick={nextProject}
+            aria-label="โปรเจกต์ถัดไป"
+          >
             <ChevronRight size={40} />
           </button>
 
@@ -144,32 +156,22 @@ const Work = () => {
                 {/* ✅ Loading overlay แยกต่างหาก */}
                 {isLoading && !imageError && (
                   <div
-                    className={styles.screenImage}
-                    style={{
-                      position: 'absolute',
-                      inset: 0,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
+                    role="status"
+                    aria-label="กำลังโหลดภาพ"
+                    style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                   >
-                    Loading…
+                    <div className={styles.spinner} />
                   </div>
                 )}
 
                 {/* ✅ Error overlay แยกต่างหาก */}
                 {imageError && (
                   <div
-                    className={styles.screenImage}
-                    style={{
-                      position: 'absolute',
-                      inset: 0,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
+                    role="alert"
+                    aria-live="polite"
+                    style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                   >
-                    Image not available
+                    ไม่สามารถแสดงภาพได้
                   </div>
                 )}
 
@@ -195,19 +197,25 @@ const Work = () => {
 
           {/* ✅ Thumbnail ใช้ handler แยก ไม่กระทบ state ภาพหลัก */}
           <div className={styles.trackWrapper}>
-            <ul className={styles.track} ref={trackRef}>
+            <ul
+              className={styles.track}
+              ref={trackRef}
+              role="tablist"
+              aria-label="เลือกโปรเจกต์"
+            >
               {experiences.map((exp, index) => (
                 <li
                   key={exp.id}
+                  role="tab"
+                  aria-selected={currentIndex === index}
+                  aria-label={`${exp.company}: ${exp.role}`}
                   className={`${styles.trackItem} ${currentIndex === index ? styles.active : ''}`}
                   onClick={() => scrollToProject(index)}
                 >
                   <img
                     src={exp.image}
-                    alt={`${exp.company}: ${exp.role}`}
-                    onError={(e) => {
-                      e.currentTarget.style.visibility = 'hidden';
-                    }}
+                    alt="" // ✅ decorative — ข้อมูลอยู่ใน aria-label ของ li แล้ว
+                    onError={(e) => { e.currentTarget.style.visibility = 'hidden'; }}
                   />
                 </li>
               ))}
