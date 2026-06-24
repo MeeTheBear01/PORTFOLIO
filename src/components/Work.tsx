@@ -3,25 +3,29 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import styles from './Work.module.css';
 
+import Rent_car_web from '../assets/Rent_car_web.png';
+import Cat_hotel_web from '../assets/Cat_hotel_web.png';
+import Game_web from '../assets/Game_web.png';
+
 const experiences = [
   {
     id: 1,
     company: 'Rent Car Web Application',
-    image: './public/Rent_car_web.png',
+    image: Rent_car_web,
     role: 'Frontend : NextJS',
     description: 'BackEnd : C#,ASP.NET Core Web API',
   },
   {
     id: 2,
     company: 'Cat Hotel Web Application',
-    image: './public/Cat_hotel_web.png',
+    image: Cat_hotel_web,
     role: 'Frontend : NextJS',
     description: 'BackEnd : Go.Lang, SqlLite',
   },
   {
     id: 3,
     company: 'Game Web Application',
-    image: './public/Game_web.png',
+    image: Game_web,
     role: 'Frontend : NextJS',
     description: 'https://thai-exercise.vercel.app/',
   },
